@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - erp@localhost" uuid="ae1b241c-4f0e-4b93-810c-f53570151857">
+    <database-info product="MySQL" version="5.5.5-10.1.8-MariaDB-1~trusty-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="erp"/>
+    <table name="branch" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_notification_branch1" table="notification" schema="" catalog="erp" columns="branch_id"/>
+      <exported-key name="fk_project_branch_plan_branch1" table="project_branch_plan" schema="" catalog="erp" columns="branch_id"/>
+      <exported-key name="fk_user_branch" table="user" schema="" catalog="erp" columns="branch_id"/>
+    </table>
+    <table name="chat" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="message" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="update_date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_chat_user1" columns="user_id" ref-table="user" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_chat_user1_idx" unique="false" columns="user_id"/>
+    </table>
+    <table name="expense" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="450" scale="0" nullable="false" jdbcType="12"/>
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="datetime" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_expense_project1" columns="project_id" ref-table="project" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_expense_project1_idx" unique="false" columns="project_id"/>
+    </table>
+    <table name="notification" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="text" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="branch_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_notification_branch1" columns="branch_id" ref-table="branch" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_notification_branch1_idx" unique="false" columns="branch_id"/>
+    </table>
+    <table name="payment" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="450" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="datetime" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_payment_project1" columns="project_id" ref-table="project" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_payment_project1_idx" unique="false" columns="project_id"/>
+    </table>
+    <table name="product" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="450" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="customer_info" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_project_product1" table="project" schema="" catalog="erp" columns="product_id"/>
+    </table>
+    <table name="project" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="450" scale="0" nullable="false" jdbcType="12"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="estimate_url" sqlType="VARCHAR" precision="400" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hourly_payment" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="budget" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="customer_info" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="archive" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="product_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_amount" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_project_product1" columns="product_id" ref-table="product" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_expense_project1" table="expense" schema="" catalog="erp" columns="project_id"/>
+      <exported-key name="fk_payment_project1" table="payment" schema="" catalog="erp" columns="project_id"/>
+      <exported-key name="fk_project_branch_plan_project1" table="project_branch_plan" schema="" catalog="erp" columns="project_id"/>
+      <exported-key name="fk_project_info_project1" table="project_info" schema="" catalog="erp" columns="project_id"/>
+      <exported-key name="fk_task_project1" table="task" schema="" catalog="erp" columns="project_id"/>
+      <index name="fk_project_product1_idx" unique="false" columns="product_id"/>
+    </table>
+    <table name="project_branch_plan" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="branch_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="budget" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="hours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_project_branch_plan_branch1" columns="branch_id" ref-table="branch" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_project_branch_plan_project1" columns="project_id" ref-table="project" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_project_branch_plan_branch1_idx" unique="false" columns="branch_id"/>
+      <index name="fk_project_branch_plan_project1_idx" unique="false" columns="project_id"/>
+    </table>
+    <table name="project_info" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="text" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_project_info_project1" columns="project_id" ref-table="project" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_project_info_user_project_info1" table="project_info_user" schema="" catalog="erp" columns="project_info_id"/>
+      <index name="fk_project_info_project1_idx" unique="false" columns="project_id"/>
+    </table>
+    <table name="project_info_user" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="project_info_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_project_info_user_project_info1" columns="project_info_id" ref-table="project_info" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_project_info_user_user1" columns="user_id" ref-table="user" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_project_info_user_project_info1_idx" unique="false" columns="project_info_id"/>
+      <index name="fk_project_info_user_user1_idx" unique="false" columns="user_id"/>
+    </table>
+    <table name="task" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="450" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="link" sqlType="VARCHAR" precision="450" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="datetime" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="amount" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_task_project1" columns="project_id" ref-table="project" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_task_user1" columns="user_id" ref-table="user" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_task_project1_idx" unique="false" columns="project_id"/>
+      <index name="fk_task_user1_idx" unique="false" columns="user_id"/>
+    </table>
+    <table name="user" schema="" catalog="erp" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="fio" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR" precision="450" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hour_price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="created" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="branch_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="role" sqlType="ENUM" precision="7" scale="0" nullable="true" jdbcType="1" def="J2FkbWluJw=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_user_branch" columns="branch_id" ref-table="branch" ref-schema="" ref-catalog="erp" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="fk_chat_user1" table="chat" schema="" catalog="erp" columns="user_id"/>
+      <exported-key name="fk_project_info_user_user1" table="project_info_user" schema="" catalog="erp" columns="user_id"/>
+      <exported-key name="fk_task_user1" table="task" schema="" catalog="erp" columns="user_id"/>
+      <index name="fk_user_branch_idx" unique="false" columns="branch_id"/>
+    </table>
+  </data-source>
+</component>
