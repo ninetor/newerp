@@ -2,12 +2,12 @@
 // adjust to the your url of web service
 var serviceBase = 'http://erp-server.local/'
 // declare app level module which depends on views, and components
-var spaApp = angular.module('spaApp', [
+var spaApp = angular.module('ERP', [
     'ngRoute',
-    'spaApp.site',
+    'ERP.site',
 ]);
 // sub module declaration
-var spaApp_site = angular.module('spaApp.site', ['ngRoute'])
+var spaApp_site = angular.module('ERP.site', ['ngRoute']);
 
 spaApp.config(['$routeProvider', function($routeProvider) {
     // config default route

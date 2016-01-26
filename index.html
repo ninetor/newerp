@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="ERP">
 <head>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css"/>
 </head>
-<body>
 <body ng-controller="index">
 <nav class="navbar navbar-default">
     <div class="container">
@@ -22,7 +21,7 @@
 <div id="main" class="container">
     <!-- angular templating -->
     <!-- this is where content will be injected -->
-    <div ng-view></div>
+    <div ng-view=""  class="view-animate"></div>
 </div>
 
 <footer class="text-center">
@@ -30,7 +29,8 @@
 </footer>
 <!-- JS -->
 <script src="assets/angular/angular.min.js"></script>
-<!--<script src="assets/angular/angular-route.min.js"></script>-->
+<script src="assets/angular/angular-route.min.js"></script>
+<script src="assets/angular/angular-animate.min.js"></script>
 <script src="app.js"></script>
 <script src="controllers/site.js"></script>
 </body>
