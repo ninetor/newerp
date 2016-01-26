@@ -1,0 +1,10 @@
+<div>
+    <p>{{ message}}</p>
+    <form role="form" name="userForm" >
+        <div ng-include="'views/user/_form.html'"></div>
+        <a href="#/users" class="btn btn-default">Отмена</a>
+        <button ng-click="createUser(user);"
+                ng-disabled="userForm.$invalid"
+                type="submit" class="btn btn-default">Добавить</button>
+    </form>
+</div>

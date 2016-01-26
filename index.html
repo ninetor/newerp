@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html  ng-app="ERP">
+<html ng-app="ERP">
 <head>
     <!-- CSS -->
+    <base href="/"/>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css"/>
+    <title>The new ERP system of nineseven</title>
 </head>
 <body ng-controller="index">
 <nav class="navbar navbar-default">
@@ -13,26 +15,40 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="#/site/about"><i class="glyphicon glyphicon-tag"></i> About</a></li>
-            <li><a href="#/site/contact"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
+            <li><a href="#/about"><i class="glyphicon glyphicon-tag"></i> About</a></li>
+            <li><a href="#/contact"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
+
+            <li><a href="#/users"><i class="glyphicon glyphicon-film"></i>Пользователи</a></li>
+
         </ul>
     </div>
 </nav>
-<div id="main" class="container">
+<div id="main" class="container view-animate-container">
     <!-- angular templating -->
     <!-- this is where content will be injected -->
-    <div ng-view=""  class="view-animate"></div>
+    <div ng-view="" class="view-animate"></div>
 </div>
 
 <footer class="text-center">
-    <p>Yii 2.0.3 + AngularJs 1.3.15</p>
+    <p>Created by Roman Chernov </p>
 </footer>
 <!-- JS -->
 <script src="assets/angular/angular.min.js"></script>
 <script src="assets/angular/angular-route.min.js"></script>
 <script src="assets/angular/angular-animate.min.js"></script>
 <script src="app.js"></script>
+
+
+<!-- CONTROLLERS -->
 <script src="controllers/site.js"></script>
+<script src="controllers/user.js"></script>
+<!-- CONTROLLERS END-->
+
+<!-- MODELS -->
+<script src="models/user.js"></script>
+<!-- MODELS END-->
+<!-- JS END-->
+
 </body>
 
 </html>

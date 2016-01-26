@@ -21,7 +21,13 @@ $config = [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => [
                     'user',
-                ]],
+                ],
+                    'extraPatterns' => [
+                        'GET branches' => 'branches',
+                        'OPTIONS branches' => 'OPTIONS',
+                    ]
+                ],
+
             ],
         ],
         'cache' => [

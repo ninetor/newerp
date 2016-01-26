@@ -1,0 +1,45 @@
+<div>
+    <h1>Юзеры</h1>
+    <p>{{ message}}</p>
+    <div ng-show="users.length > 0">
+        <a class="btn btn-primary" href="#/users/create">
+            <i class="glyphicon glyphicon-plus"></i> Добавить
+        </a>
+        <table class="table table-striped table-hover">
+            <thead>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Изображение</th>
+            <th>Стоимость часа</th>
+            <th>Создан</th>
+            <th>Отдел</th>
+            <th>Роль</th>
+            <th style="width:80px;">Действия&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in users">
+                <td>{{data.id}}</td>
+                <td>{{data.fio}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.image}}</td>
+                <td>{{data.hour_price}}</td>
+                <td>{{data.created}}</td>
+                <td>{{data.branch_id}}</td>
+                <td>{{data.role}}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="#/users/update/{{data.id}}">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger btn-xs" ng-click="deleteUser(data.id)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="users.length == 0">
+        Юзеров еще нет
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div>
+    <h1>Редактирование пользователя</h1>
+
+    <p>{{ message}}</p>
+    <form role="form" name="userForm">
+        <div ng-include="'views/user/_form.html'"></div>
+        <a href="#/users" class="btn btn-default">Отмена</a>
+        <button ng-click="updateUser(user);"
+                ng-disabled="isClean() || userForm.$invalid"
+                type="submit" class="btn btn-default">Сохранить</button>
+    </form>
+</div>

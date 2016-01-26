@@ -1,20 +1,20 @@
 'use strict';
-spaApp_site.config(['$routeProvider', function($routeProvider) {
+mainModule.config(['$routeProvider', function($routeProvider) {
     $routeProvider
-        .when('/site/index', {
+        .when('/', {
             templateUrl: 'views/site/index.html',
             controller: 'index'
         })
-        .when('/site/about', {
+        .when('/about', {
             templateUrl: 'views/site/about.html',
             controller: 'about'
         })
-        .when('/site/contact', {
+        .when('/contact', {
             templateUrl: 'views/site/contact.html',
             controller: 'contact'
         })
         .otherwise({
-            redirectTo: '/site/index'
+            redirectTo: '/'
         });
 }])
     .controller('index', ['$scope', '$http', function($scope,$http) {
