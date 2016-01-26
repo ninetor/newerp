@@ -20,8 +20,8 @@
 </div>
 <div class= "form-group" ng-class="{error: userForm.branch_id.$invalid}">
     <label for="branchSelect"> Отдел </label>
-    <select name="branchSelect" id="branchSelect" class="form-control" ng-model="data.branches">
-        <option ng-repeat="option in data.branches" value="{{option.id}}">{{option.name}}</option>
+    <select name="branchSelect" id="branchSelect" class="form-control" ng-model="branches">
+        <option ng-repeat="option in branches" value="{{option.id}}">{{option.name}}</option>
     </select>
 </div>
 <div class= "form-group" ng-class="{error: userForm.role.$invalid}">
