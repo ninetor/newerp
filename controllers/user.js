@@ -39,7 +39,7 @@ userModule.controller('index', ['$scope', '$http', 'userService',
             $scope.users = data.data;
         });
         $scope.deleteUser = function(userID) {
-            if(confirm("Âû äåéñòâèòåëüíî õîòèòå óäàëèòü: " + userID)==true && userID>0){
+            if(confirm("Ð’Ñ‹ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹ Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ: " + userID)==true && userID>0){
                 userService.deleteUser(userID);
                 $route.reload();
             }
@@ -55,7 +55,12 @@ userModule.controller('index', ['$scope', '$http', 'userService',
             //get branches to select
             $http.get(serviceBase + 'branches', {  timeout: 600}).
                 success(function(data, status, headers, config) {
-                   $scope.branches = data;
+                    $scope.branches = data;
+                });
+            //get roles to select
+            $http.get(serviceBase + 'users/roles', {  timeout: 600}).
+                success(function(data, status, headers, config) {
+                    $scope.roles = data;
                 });
 
         }])

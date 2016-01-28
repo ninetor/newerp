@@ -19,14 +19,15 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => [
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => [
                     'user',
                     'branch',
-                ],
-//                    'extraPatterns' => [
-//                        'GET branches' => 'branches',
-//                        'OPTIONS branches' => 'OPTIONS',
-//                    ]
+                    ],
+                    'extraPatterns' => [
+                        'GET roles' => 'roles',
+                        'OPTIONS roles' => 'roles',
+                    ]
                 ],
 
             ],

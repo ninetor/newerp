@@ -27,6 +27,13 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+
+    private static $roles = [
+        'admin',
+        'manager',
+        'user'
+    ];
+
     /**
      * @inheritdoc
      */
@@ -173,6 +180,11 @@ class User extends \yii\db\ActiveRecord
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+
+    public static function getRoles()
+    {
+        return self::$roles;
     }
 
 

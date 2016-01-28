@@ -1,10 +1,47 @@
-<div>
-    <p>{{ message}}</p>
     <form role="form" name="userForm" >
-        <div ng-include="'views/user/_form.html'"></div>
+        <div class="form-group" ng-class="{error: userForm.fio.$invalid}">
+            <label> ФИО </label>
+
+            <div>
+                <input name="fio" ng-model="user.fio" type="text" class="form-control" placeholder="ФИО пользователя"
+                       required/>
+                <span ng-show="userForm.fio.$dirty && userForm.fio.$invalid" class="help-inline">ФИО обязательно</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{error: userForm.email.$invalid}">
+            <label> Email </label>
+
+            <div>
+                <input name="email" ng-model="user.email" type="email" class="form-control" placeholder="Email пользователя"
+                       required/>
+                <span ng-show="userForm.email.$dirty && userForm.email.$invalid" class="help-inline">Email невалидный</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label> Ставка часа </label>
+
+            <div>
+                <input name="hour_price" ng-model="user.hour_price" type="number" class="form-control" min="0" max="99"
+                       placeholder="Ставка часа пользователя" required/>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{error: userForm.branch_id.$invalid}">
+            <label for="branchSelect"> Отдел </label>
+
+            <select name="branch_id" id="branchSelect" class="form-control" ng-model="user.branch_id"
+                ng-options="item.id as item.name for item in branches">
+            </select>
+        </div>
+        <div class="form-group" ng-class="{error: userForm.role.$invalid}">
+            <label> Роль </label>
+            <select name="role" id="rolesSelect" class="form-control" ng-model="user.role"
+                    ng-options="item for item in branches">
+            </select>
+        </div>
+
+
         <a href="#/users" class="btn btn-default">Отмена</a>
         <button ng-click="createUser(user);"
                 ng-disabled="userForm.$invalid"
                 type="submit" class="btn btn-default">Добавить</button>
     </form>
-</div>

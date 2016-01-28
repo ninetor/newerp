@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\Branch;
+use app\models\User;
 use Yii;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBasicAuth;
@@ -18,15 +19,30 @@ class UserController extends ActiveController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['corsFilter'] =
-            [
-                    'class' => Cors::className(),
-                    'cors' => [
-                        'Origin' => ['http://erp.local'],
+//        $behaviors['corsFilter'] =
+//            [
+//                    'class' => Cors::className(),
+//                    'cors' => [
+//                        'Origin' => ['http://erp.local'],
+//                        'Origin' => ['*'],
 //                        'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
-                    ],
-            ];
+//                    ],
+//            ];
+
+        $behaviors['cors'] = [ 'class' => Cors::className() ];
         return $behaviors;
+    }
+    protected function verbs()
+    {
+        $verbs = parent::verbs();
+        $verbs['roles'] = ['GET', 'HEAD'];
+        return $verbs;
+    }
+
+
+    public function actionRoles()
+    {
+        return [];
     }
 
 }
