@@ -1,5 +1,5 @@
 'use strict';
-userModule.factory("services", ['$http','$location','$route',
+userModule.factory("userService", ['$http','$location','$route','branchService',
     function($http,$location,$route) {
         var obj = {};
         obj.getUsers = function(){

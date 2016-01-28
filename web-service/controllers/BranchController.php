@@ -11,20 +11,20 @@ use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
-class UserController extends ActiveController
+class BranchController extends ActiveController
 {
     // adjust the model class to match your model
-    public $modelClass = 'app\models\User';
+    public $modelClass = 'app\models\Branch';
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['corsFilter'] =
             [
-                    'class' => Cors::className(),
-                    'cors' => [
-                        'Origin' => ['http://erp.local'],
+                'class' => Cors::className(),
+                'cors' => [
+                    'Origin' => ['http://erp.local'],
 //                        'Access-Control-Request-Method' => ['GET', 'HEAD', 'OPTIONS'],
-                    ],
+                ],
             ];
         return $behaviors;
     }
